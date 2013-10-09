@@ -134,6 +134,7 @@ save(ert1, gnet1, g2, rf2, g2_no_exp1, ert_no_exp1, file="__final_models.RData")
 
 #######################################################################################################################
 #create ensemble -- weights determined by cross validation
-th1$ACTION<-with(th1, 1-((pred_gbm*1+pred_ert*.5+pred_gnet*.3+pred_rf*.3)/2.1+0.15*pred_gbm_noexp+0.15*pred_ert_noexp)/1.3)
-sub_final<-th1[th1$id<100000, c("id", "ACTION")]
+th1$pred<-with(th1, 1-((pred_gbm*1+pred_ert*.5+pred_gnet*.3+pred_rf*.3)/2.1+0.15*pred_gbm_noexp+0.15*pred_ert_noexp)/1.3)
+sub_final<-th1[th1$id<100000, c("id", "pred")]
+names(sub_final)[2]<-"ACTION"
 write.csv(sub_final, file="__final_sub.csv", row.names=F)
