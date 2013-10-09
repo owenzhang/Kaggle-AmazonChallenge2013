@@ -9,7 +9,7 @@ require(glmnet)
 
 
 
-setwd("//home/samba/kaggle_2013_amazon")
+setwd("//[where train.csv and test.csv are]")
 source("__final_utils.R")
 source("__final_data.R")
 source("__final_model.R")
